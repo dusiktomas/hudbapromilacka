@@ -1,0 +1,280 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+a {
+    color: rgb(51,51,51);
+    text-decoration: none;
+}
+a:hover {
+    color: rgb(204,51,51);
+}
+table {
+    border-collapse: collapse;
+}
+.border-link {
+    border-bottom: 0 solid #f37736;
+}
+.fb-like-box {
+    margin-top: 168px;
+    margin-left: 100px;
+    float: left;
+    background-color: whitesmoke;
+}
+/* HEADER */
+
+header {
+    //border: 1px gray solid;
+    width: 100%;
+    height: 100px;
+    padding-bottom: 15px;
+}
+.header-links {
+    opacity: 0.7;
+    float: right;
+    margin-top: 40px;
+    margin-right: 40px;
+    font-size: 20px;
+}
+.header-link {
+    padding: 10px;
+    border-bottom: 0 solid #f37736;
+}
+.header-logo {
+    border-bottom: 0 solid #f37736;
+    margin-left: 150px;
+    padding-top: 0px;
+}
+.header-text {
+    display: none;
+    opacity: 0.8;
+    float: right;
+    padding-top: 50px;  
+    width: 200px;
+}
+.header-img {
+    width: 600px;
+}
+
+/* INFORMATION LAYER */
+.information-layer {
+    //border: 1px gray solid;
+    width: 100%;
+    height: 550px;
+    background-color: rgb(204,51,51);
+}
+.information-layer-img-pc {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 57px;
+    width: 63em;
+}
+.information-layer-img-arrow {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    width: 7.5em;
+}
+
+/* KONEC INFORMATION LAYER */
+
+/* PLAYER LAYER */
+
+.player-layer {
+    width: 100%;
+    height: 670px;
+}
+.player-layer-player {
+    opacity: 0.95;
+    margin-left: auto;
+    margin-right: auto;
+    width: 28em;
+    padding-top: 25px;
+}
+.player-layer-img-vyber-skladby {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 80px;
+    width: 23em;
+}
+.player-playlist {
+    width: 412px;
+    height: 300px;
+    border: 1px rgb(204,51,51) solid;
+    border-top: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 8px;
+    scrollbar-face-color: #336699; scrollbar-3dlight-color: #336699; scrollbar-base-color: #336699; 
+    scrollbar-track-color: #336699; scrollbar-darkshadow-color: #000; scrollbar-arrow-color: #000; 
+    scrollbar-shadow-color: #fff; scrollbar-highlight-color: #fff;
+}
+.player-layer-border {
+    border-bottom: 1px gray solid;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.player-layer-img-arrow {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    width: 7.5em;
+}
+.player-layer-audio-table {
+    width: 420px;
+}
+.player-layer-audio-table tr {
+    background-color: #fff; 
+}
+.player-layer-audio-table tr:nth-child(even) {
+    background-color: #ddd;
+}
+
+/* KONEC PLAYERU */
+
+/* CHOICE LAYER */
+
+.choice-layer {
+    width: 100%;
+    height: 650px;
+    display: none;
+}
+.choice-layer-img-zpusoby {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 68px;
+    width: 40em;
+}
+.choice-layer-texts {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 68px;
+    width: 74em;
+}
+.choice-layer-text-skladba {
+    float: left;
+    padding-left: 80px;
+}
+.choice-layer-text-balicek { 
+    float: right;
+}
+#text-skladba {
+    border-bottom: 0 solid #f37736;
+}
+#text-balicek {
+    border-bottom: 0 solid #f37736;
+}
+.choice-layer-icons {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 68px;
+    width: 60em;
+}
+.choice-layer-img-skladba {
+    float: left;
+}
+.choice-layer-img-balicek { 
+    float: right;
+}
+.choice-layer-img-arrow {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 350px;
+    width: 7.5em;
+}
+.choice-layer-skladba-content {
+    display: none;
+    float: left;
+    margin-top: 13px;
+    opacity: 0.8;
+    border-radius: 5px;
+    width: 270px;
+    height: 150px;
+
+}
+.choice-layer-balicek-content {
+    display: none;
+    float: right;
+    margin-top: 13px;
+    opacity: 0.8;
+    border-radius: 5px;
+    width: 270px;
+    height: 150px;
+}
+
+/* KONEC CHOICE LAYERU */
+
+/* FORM LAYER */
+.form-layer {
+    color: whitesmoke;
+    font-size: 28px;
+    display: none;
+    width: 100%;
+    height: 650px;
+    background-color: rgb(204,51,51);
+}
+.form-layer-img-objednavka {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 68px;
+    width: 11em;
+}
+.form-layer-form {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20em;
+    font-size: 32px;
+}
+.form-layer-form textarea {
+    width: 250px;
+    height: 250px;
+    resize: none;
+}
+.form-layer-form input {
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #888888;
+    font-size: 20px;
+}
+.form-layer-form-1 {
+    float: left;
+}
+.form-layer-form-2 {
+    float: right;
+}
+
+/* KONEC FORM LAYERU */ 
+footer {
+    //border: 1px gray solid;
+    width: 100%;
+    height: 150px;
+    background-color: rgb(49,51,62);
+}
+.footer-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 13.5em;
+}
+.footer-content-table {
+    float: left;
+    opacity: 0.8;
+    padding-top: 60px;
+    width: 270px;
+    color: whitesmoke;
+    margin-right: 250px;
+}
+.footer-content-links {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50em;
+    opacity: 0.8;
+    padding-top: 60px;
+    color: whitesmoke;
+}
+.footer-link {
+    opacity: 0.5;
+    border-bottom: 0 solid #f37736;
+}
+.footer-link:hover {
+    opacity: 0.9;
+}
