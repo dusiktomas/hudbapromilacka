@@ -8,8 +8,7 @@ class Customer extends Database{
 	VALUES ('".$args['jmeno']."', '".$args['prijmeni']."', '".$args['email']."', 
 	'".$args['mesto']."', '".$args['ulice']."', '".$args['psc']."');
 	";
-	$result = self::handler()->query($query);
-	if($result){
+	if(self::handler()->query($query)){
 	  $id = self::handler()->query('SELECT LAST_INSERT_ID()');
 	  $id = $id->fetch_row();
 	  $this->id = $id[0];
@@ -23,7 +22,7 @@ class Customer extends Database{
   }
   
   public function isExists(){
-    if(!$this->id == Null){
+    if($this->id !== Null){
 	  return true;
 	}
 	return false;

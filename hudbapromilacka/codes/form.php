@@ -18,6 +18,10 @@ if(isset($_POST["jmeno"]) && isset($_POST["mesto"])){
     $skladba = htmlspecialchars($_POST["skladba"]);
     $prani = htmlspecialchars($_POST["prani"]);
 	
+	if(!Audio::isAudioAvailable($skladba)){
+	  return Redirection::orderRedirectToError();
+	};
+	
 	$customerArray = array(
 		'jmeno' => $jmeno,
 		'prijmeni' => $prijmeni,
@@ -41,10 +45,21 @@ if(isset($_POST["jmeno"]) && isset($_POST["mesto"])){
 		'datum_objednani' => date('d-m-y:H:i'),
 		'customer' => $customer->getId(),
 	);
-	
 	$order = new Order($orderArray);
-
 	
+	$audioArray = array(
+	  'order' => $order->getId(),
+	  'audio' => Audio::getAudioIdByName($skladba),
+	);
+	
+	$audio = new Audio($audioArray);
+	
+	if(!$order->isExists()){
+	  return Redirection::orderRedirectToError();
+	}
+	if(!$audio->isExists()){
+	  return Redirection::orderRedirectToError();
+	}
 	if(Audio::getAudioIdByName($skladba) === Null){
 	  return Redirection::orderRedirectToError();
 	}
