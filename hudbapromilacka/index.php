@@ -2,8 +2,6 @@
 include  "classes/db.php";
 include 'classes/Redirection.php';
 include  "codes/form.php";
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +9,8 @@ include  "codes/form.php";
         <title>HudbaProMiláčka - Daruj svému nejblížší originální dárek</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <link type="text/css" href="player/demos/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+        <link type="text/css" href="player/demos/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" />
         <script src="scripts/jquery-1.11.1.js"></script>
         <script src="player/jquery.jplayer.min.js"></script>
         <script src="player/add-on/jplayer.playlist.min.js"></script>
@@ -112,33 +111,32 @@ include  "codes/form.php";
         <div id="form-layer" class="form-layer">
             <div class="form-layer-img-objednavka"><img src="images/objednavka.jpg"></div>
             <div class="form-layer-form">
-                <form method="POST">
-                    <div class="form-layer-form-1">
-                        <label>
+                <form method="POST" role="form">
+                    <div class="form-layer-form-1" class="form-group">
+                        
                             <span>Typ objednávky </span><br />
-                            <input type="text" name="typ" id="form-select-content" required><br />
-                        </label>
-                        <label>
+                            <input type="text" class="form-control" name="typ" id="form-select-content" required><br />
+                        
+                        
                             <span>Kontaktní údaje</span> <br/>
-                            <input type="text" name="jmeno" placeholder="Jméno" required> <br />
-                            <input type="text" name="prijmeni" placeholder="Přijmení" required> <br />
-                            <input type="email" name="email" placeholder="Email" required> <br />
-                        </label>
-                        <label>
+                            <input type="text" class="form-control" name="jmeno" placeholder="Jméno" required> <br />
+                            <input type="text" class="form-control" name="prijmeni" placeholder="Přijmení" required> <br />
+                            <input type="email" class="form-control" name="email" placeholder="Email" required> <br />
+                        
                             <span>Adresa </span><br />
-                            <input type="text" name="mesto" placeholder="Město" required> <br />
-                            <input type="text" name="ulice" placeholder="Ulice a číslo popisné" required> <br />
-                            <input type="text" name="psc" placeholder="PSČ" required> <br />
-                        </label>
+                            <input type="text" class="form-control" name="mesto" placeholder="Město" required> <br />
+                            <input type="text" class="form-control" name="ulice" placeholder="Ulice a číslo popisné" required> <br />
+                            <input type="text" class="form-control" name="psc" placeholder="PSČ" required> <br />
+                        
                     </div>
-                    <div class="form-layer-form-2">
+                    <div class="form-layer-form-2" class="form-group">
                         <span>Název skladby </span><br />
-                        <input type="text" name="skladba" id="form-audio-name" placeholder="Název skladby" required> <br />
+                        <input type="text" class="form-control" name="skladba" id="form-audio-name" placeholder="Název skladby" required> <br />
                         <div class="form-layer-form-2-wish">
                             <span>Přání </span><br />
-                            <textarea name="prani" placeholder="Do tohoto pole napište přání, které bude v obalu."></textarea><br />
+                            <textarea name="prani" class="form-control" placeholder="Do tohoto pole napište přání, které bude v obalu."></textarea><br />
                         </div>
-                        <input type="submit" value="Objednat">
+                        <button type="submit" class="btn btn-default">Objednat</button>
                     </div>
                 </form>
             </div>
