@@ -227,18 +227,20 @@ header {
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    width: 20em;
+	width: 540px;
+    height: 450px;
 }
+
 .form-layer-form textarea {
     width: 300px;
     height: 250px;
     resize: none;
-	color: whitesmoke;
+	color: black;
 }
 .form-layer-form input {
+	color: black;
     border-radius: 5px;
     box-shadow: 1px 1px 1px #888888;
-
 }
 .form-layer-form-1 {
     float: left;
