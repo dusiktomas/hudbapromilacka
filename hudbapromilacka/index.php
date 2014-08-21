@@ -12,6 +12,7 @@ include  "codes/form.php";
 		<link rel="stylesheet" href="css/bootstrap.min.css">
         <link type="text/css" href="player/demos/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" />
         <script src="scripts/jquery-1.11.1.js"></script>
+		<script src="js/bootstrap.min.js"></script>
         <script src="player/jquery.jplayer.min.js"></script>
         <script src="player/add-on/jplayer.playlist.min.js"></script>
         <script src="scripts/all-scripts.js"></script>
@@ -110,37 +111,34 @@ include  "codes/form.php";
         </div>
         <div id="form-layer" class="form-layer">
             <div class="form-layer-img-objednavka"><img src="images/objednavka.jpg"></div>
+			<form method="POST" role="form" class="form-horizontal">
             <div class="form-layer-form">
-                <form method="POST" role="form">
                     <div class="form-layer-form-1" class="form-group">
-                        
                             <span>Typ objednávky </span><br />
-                            <input type="text" class="form-control" name="typ" id="form-select-content" required><br />
-                        
-                        
+							<input type="text" class="form-control" name="typ" id="form-select-content" readOnly="true"><br />
                             <span>Kontaktní údaje</span> <br/>
-                            <input type="text" class="form-control" name="jmeno" placeholder="Jméno" required> <br />
-                            <input type="text" class="form-control" name="prijmeni" placeholder="Přijmení" required> <br />
-                            <input type="email" class="form-control" name="email" placeholder="Email" required> <br />
-                        
+                            <input type="text" class="form-control" name="jmeno" placeholder="Jméno" maxlength="16" required> <br />
+                            <input type="text" class="form-control" name="prijmeni" placeholder="Přijmení" maxlength="16" required> <br />
+                            <input type="email" class="form-control" name="email" placeholder="Email" maxlength="40" required> <br />
                             <span>Adresa </span><br />
-                            <input type="text" class="form-control" name="mesto" placeholder="Město" required> <br />
-                            <input type="text" class="form-control" name="ulice" placeholder="Ulice a číslo popisné" required> <br />
-                            <input type="text" class="form-control" name="psc" placeholder="PSČ" required> <br />
-                        
+                            <input type="text" class="form-control" name="mesto" placeholder="Město" maxlength="30" required> <br />
+                            <input type="text" class="form-control" name="ulice" placeholder="Ulice a číslo popisné" maxlength="40" required> <br />
+                            <input type="text" class="form-control" name="psc" placeholder="PSČ" maxlength="5" required> <br />
                     </div>
                     <div class="form-layer-form-2" class="form-group">
                         <span>Název skladby </span><br />
-                        <input type="text" class="form-control" name="skladba" id="form-audio-name" placeholder="Název skladby" required> <br />
+                        <input type="text" class="form-control" name="skladba" id="form-audio-name" placeholder="Název skladby" readOnly="true"> <br />
                         <div class="form-layer-form-2-wish">
                             <span>Přání </span><br />
-                            <textarea name="prani" class="form-control" placeholder="Do tohoto pole napište přání, které bude v obalu."></textarea><br />
+                            <textarea name="prani" class="form-control" maxlength="255" placeholder="Do tohoto pole napište přání, které bude v obalu."></textarea><br />
                         </div>
+						<span>Zásilky jsou na dobírku posílány českou poštou.<br />Cena za balík je 95 ,- Kč s DPH. </span><br />
                         <button type="submit" class="btn btn-default">Objednat</button>
                     </div>
                 </form>
+				</div>
             </div>
-        </div>
+       
         <footer>
             <div class="footer-content">
                 <div class="footer-content-table">

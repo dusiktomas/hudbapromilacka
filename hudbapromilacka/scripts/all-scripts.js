@@ -60,10 +60,7 @@ $(document).ready(function (){
        scrollTo(layer);
     });
     
-    //FORM Content
-    $("#form-select-content").on("change", function (){
-       alert ($(this).val()); 
-    });
+
     
     //Icons effect and click
     var icon_progress = false;
@@ -99,6 +96,11 @@ $(document).ready(function (){
     $(".icon").on("click",function (e){
        e.stopPropagation();
        e.preventDefault();
+	   if ($(this).data("type") == "Dárkový Balíček"){
+			$(".form-layer-form-2-wish textarea").prop('readOnly', false);
+	   }else{
+			$(".form-layer-form-2-wish textarea").prop('readOnly', true);
+	   }
        $(".form-layer").slideDown(); 
         scrollTo ("form-layer");
         $("#form-select-content").val($(this).data("type"));
