@@ -59,7 +59,12 @@ $(document).ready(function (){
        var layer = $(this).data("scroll");
        scrollTo(layer);
     });
-    
+    //order
+	$(".form-layer-form-2-wish textarea").on('keyup', function(){
+	  var orderCounter = $(".form-layer-order-counter");
+	  orderCounter.empty();
+	  orderCounter.append($(this).val().length + '/255');
+	});
 
     
     //Icons effect and click

@@ -132,6 +132,7 @@ include  "codes/form.php";
                             <span>Přání </span><br />
                             <textarea name="prani" class="form-control" maxlength="255" placeholder="Do tohoto pole napište přání, které bude v obalu."></textarea><br />
                         </div>
+						<div class="form-layer-order-counter"></div>
 						<span>Zásilky jsou na dobírku posílány českou poštou.<br />Cena za balík je 95 ,- Kč s DPH. </span><br />
                         <button type="submit" class="btn btn-default">Objednat</button>
                     </div>
@@ -143,8 +144,7 @@ include  "codes/form.php";
             <div class="footer-content">
                 <div class="footer-content-table">
                 <table>
-                    <td>Home</td><td> | </td><td> O nás </td><td> | </td><td>Produkty</td><tr></tr>
-                    <td colspan="5">© 2014 All rights reserved</td>
+                    <td colspan="5">©2014 All rights reserved</td>
                 </table>
                 </div>
                 <div class="footer-content-links">
