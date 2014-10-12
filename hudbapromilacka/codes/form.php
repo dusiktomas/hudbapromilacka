@@ -1,8 +1,8 @@
 <?php
-include 'classes/order/Order.php';
-include 'classes/order/Audio.php';
-include 'classes/order/Customer.php';
-include 'classes/order/Prices.php';
+include 'classes/controller/Order.php';
+include 'classes/controller/Audio.php';
+include 'classes/controller/Customer.php';
+include 'classes/controller/Prices.php';
 
 
 
@@ -18,6 +18,12 @@ if(isset($_POST["jmeno"]) && isset($_POST["mesto"])){
     $skladba = htmlspecialchars($_POST["skladba"]);
     $prani = htmlspecialchars($_POST["prani"]);
 	
+	$audio = Audio::getAudioIdByName($skladba);
+	
+	if(Audio::getAudioIdByName($skladba) === Null){
+	  return Redirection::orderRedirectToError('audio');
+	}
+	
 	$customerArray = array(
 		'jmeno' => $jmeno,
 		'prijmeni' => $prijmeni,
@@ -30,25 +36,27 @@ if(isset($_POST["jmeno"]) && isset($_POST["mesto"])){
 	$customer = new Customer($customerArray);
 	
 	if(!$customer->isExists()){
-	  return Redirection::orderRedirectToError();
+	  return Redirection::orderRedirectToError('customer');
 	}
 	
 	$orderArray = array(
 		'typ' => $typ,
 		'prani' => $prani,
-		'audio' => Audio::getAudioIdByName($skladba),
+		'audio' => $audio,
 		'cena' => Prices::getAudioPrice(),
 		'datum_objednani' => date('d-m-y:H:i'),
 		'customer' => $customer->getId(),
 	);
 	
 	$order = new Order($orderArray);
-
-	
-	if(Audio::getAudioIdByName($skladba) === Null){
-	  return Redirection::orderRedirectToError();
+	if(!$order->isExists()){
+	  return Redirection::orderRedirectToError('order');
 	}
 	
+	$audio = new Audio($skladba);
+	if(!$audio->isSold()){
+	  return Redirection::orderRedirectToError('audioNotSold');
+	}
 	Redirection::orderRedirectToSuccess();	
 }
 

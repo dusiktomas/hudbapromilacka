@@ -16,9 +16,16 @@ $(document).ready(function (){
     $(".border-link").on("mouseleave", function (){
        $(this).animate({"borderWidth" : "0"}, 120);
     });
+
     
     
     //HEADER EFFECT 
+	$("#informace-link").on('click', function(){
+	  $('.informace-layer').toggle(400);
+	})
+;	$(".information-layer-img-pc").on("click", function (){
+		scrollTo('player-layer');
+	});
     $(".header-link").on("mouseenter", function (){
        $(this).animate({"borderWidth" : "2"}, 120);
     });
@@ -70,13 +77,14 @@ $(document).ready(function (){
     //Icons effect and click
     var icon_progress = false;
     $(".icon").on("mouseenter",function (){
-        if (!icon_progress) {
+        if (!icon_progress){
             $(this).animate({"padding-top": "10px"}, 220);
             if ($(this).data("type") == "Dárkový Balíček") { 
                 $("#text-balicek").animate({borderWidth: 2}, 120);
                 $(".choice-layer-balicek-content").slideDown();
             }
             if ($(this).data("type") == "Skladba") {
+				$(this).attr('placeholder', 'Pro přání si vyberte typ Dárkový Balíček');
                 $("#text-skladba").animate({borderWidth: 2}, 120);
                 $(".choice-layer-skladba-content").slideDown();
             }
@@ -89,10 +97,14 @@ $(document).ready(function (){
                 icon_progress = false;
             });
             if ($(this).data("type") == "Dárkový Balíček") { 
+				$(".form-wish").attr('placeholder', 'Do tohoto pole napište přání, které bude v obalu.');
+				$(".total-price").text('674');
                 $("#text-balicek").animate({borderWidth: 0}, 120);
                 $(".choice-layer-balicek-content").slideUp(200);
             }
             if ($(this).data("type") == "Skladba") { 
+				$(".form-wish").attr('placeholder', 'Pro přání si vyberte typ Dárkový Balíček');
+				$(".total-price").text('499');
                 $("#text-skladba").animate({borderWidth: 0}, 120);
                 $(".choice-layer-skladba-content").slideUp(200);
             }

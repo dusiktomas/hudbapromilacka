@@ -5,7 +5,7 @@
 $db = Database::handler(); 
 
 //Query
-$query = "SELECT * FROM audio";
+$query = "SELECT * FROM audio WHERE koupeno = '0'";
 $result =  $db->query($query);
 ?>
 <?php if ($result->num_rows): ?>
@@ -15,6 +15,8 @@ $result =  $db->query($query);
         <td><span><a href="#" class="audio-pick border-link" data-nazev="<?=$row["nazev"]?>">Tuto chci!</a></span></td></tr>
     <?php endwhile; ?>
     </table>
+<?php else: ?>
+	Momentálně máme vyprodáno, na dalších skladbách se pracuje.
 <?php endif; ?>
 
 

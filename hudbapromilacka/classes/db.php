@@ -15,6 +15,11 @@ class Database {
 			return self::$db;
 		}
     }
+	
+	protected function query($query){
+	  $handle = self::handler()->query($query);
+	  return $handle;
+	}
 }
 
 ?>

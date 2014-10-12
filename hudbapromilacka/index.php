@@ -31,7 +31,7 @@ include  "codes/form.php";
         }(document, 'script', 'facebook-jssdk'));</script>
         <header>
             <span class="header-links">
-                <a class="header-link" href="">INFORMACE</a> |
+                <a class="header-link" id="informace-link" href="#">INFORMACE</a> |
                 <a class="header-link" href="">KONTAKT</a> |
                 <a class="header-link" href="">JEDEN</a>
             </span>
@@ -40,10 +40,23 @@ include  "codes/form.php";
                 <span class="header-text">Klikněte a vyberte si skladbu.</span>
             </div>
         </header>
+		<div class="informace-layer">
+			<div class="informace-layer-content">
+				<h2 class="informace-nadpis">Informace o skladbách</h2>
+				<p>Veškerý hudební materiál je komponován zkušenými autory, kteří se aktivně podílí na hudební tvorbě pro české
+				i zahraniční interprety a televizní reklamy.
+				Každá skladba je jedinečná, to znamená, že si můžete být jistí, že ji neuslyšíte nikde jinde a vlastníte tak originální kus.</p>
+				<h2 class="informace-nadpis">Informace o skladbách</h2>
+				<p>Veškerý hudební materiál je komponován zkušenými autory, kteří se aktivně podílí na hudební tvorbě pro české
+				i zahraniční interprety a televizní reklamy.
+				Každá skladba je jedinečná, to znamená, že si můžete být jistí, že ji neuslyšíte nikde jinde a vlastníte tak originální kus.</p>
+			</div>
+        </div>
         <div class="information-layer">
             <div class="information-layer-img-pc"><img src="images/img-pc.png"></div>
             <div class="information-layer-img-arrow"><a href="#" alt="Neco"><img class="arrow" alt="Vyberte si skladbu" title="Vyberte si skladbu" data-scroll="player-layer" src="images/arrow.png"></a></div>    
         </div>
+		
         <!--ZAČÁTEK PLAYERU !-->
         <div id="player-layer" class="player-layer">
             <div class="fb-like-box" data-href="https://www.facebook.com/Hudbapromilacka" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
@@ -103,9 +116,9 @@ include  "codes/form.php";
             </div>
             <div class="choice-layer-icons">
                 <div class="icon choice-layer-img-skladba" data-type="Skladba"><a href="#"><img src="images/icon-skladba.jpg"></a></div>
-                <div class="choice-layer-skladba-content">Vybraná skladba Vám bude zaslána na uvedený email v příloze. Tato možnost je rychlá a levná.<br /> Celková cena za jednu skladbu je <b>599</b> (s DPH).</div>
+                <div class="choice-layer-skladba-content">Vybraná skladba Vám bude zaslána na uvedený email v příloze. Tato možnost je rychlá a levná.<br /> Celková cena za jednu skladbu je <b>499</b> (s DPH).</div>
                 <div class="icon choice-layer-img-balicek" data-type="Dárkový Balíček"><a href="#"><img src="images/icon-balicek.jpg"></a></div>
-                <div class="choice-layer-balicek-content">Tento balíček obsahuje CD s potiskem v obalu, které obsahuje Vaše přání pro danou osobu. Na obalu CD je napsané jméno, pro kterou osobu je CD určeno. <br /> Celková cena za jeden dárkový balíček je <b>699</b> (s DPH) + poštovné .</div>
+                <div class="choice-layer-balicek-content">Tento balíček obsahuje CD s potiskem v obalu, které obsahuje Vaše přání pro danou osobu. Na obalu CD je napsané jméno, pro kterou osobu je CD určeno. <br /> Celková cena za jeden dárkový balíček je <b>599</b> (s DPH) + poštovné .</div>
             </div>
             <div class=" choice-layer-img-arrow"><img class="arrow" alt="Po vybrání typu objednávky vyplňte formulář" title="Po vybrání typu objednávky vyplňte formulář" data-type="vyber" data-scroll="form-layer" src="images/arrow.png"></div>  
         </div>
@@ -130,10 +143,12 @@ include  "codes/form.php";
                         <input type="text" class="form-control" name="skladba" id="form-audio-name" placeholder="Název skladby" readOnly="true"> <br />
                         <div class="form-layer-form-2-wish">
                             <span>Přání </span><br />
-                            <textarea name="prani" class="form-control" maxlength="255" placeholder="Do tohoto pole napište přání, které bude v obalu."></textarea><br />
+                            <textarea name="prani" class="form-control form-wish" maxlength="255" placeholder="Do tohoto pole napište přání, které bude v obalu."></textarea><br />
                         </div>
+						<input type="checkbox" name="check-box" required> Souhlasím s pravidly<br/>
 						<div class="form-layer-order-counter"></div>
-						<span>Zásilky jsou na dobírku posílány českou poštou.<br />Cena za balík je 95 ,- Kč s DPH. </span><br />
+						<span>Zásilky jsou na dobírku posílány českou poštou.<br />
+						Celková cena je <strong><span class="total-price"></span></strong> ,- Kč (s DPH). <br />
                         <button type="submit" class="btn btn-default">Objednat</button>
                     </div>
                 </form>

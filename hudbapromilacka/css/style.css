@@ -54,7 +54,23 @@ header {
 .header-img {
     width: 600px;
 }
-
+/*  INFORMACE LAYER */
+.informace-layer-content{
+    margin-left: auto;
+    margin-right: auto;
+	width: 450px;
+}
+.informace-layer {
+    border-top: 1px gray solid;
+    width: 100%;
+    height: 550px;
+    background-color: #fff;
+	display: none;
+}
+.informace-nadpis {
+    background-color: #fff;
+	border-bottom: 1px whitesmoke solid;
+}
 /* INFORMATION LAYER */
 .information-layer {
     //border: 1px gray solid;
@@ -62,6 +78,7 @@ header {
     height: 550px;
     background-color: rgb(204,51,51);
 }
+
 .information-layer-img-pc {
     margin-left: auto;
     margin-right: auto;
