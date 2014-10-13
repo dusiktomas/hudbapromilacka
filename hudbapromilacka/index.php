@@ -1,6 +1,7 @@
 <?php 
-include  "classes/db.php";
-include 'classes/Redirection.php';
+
+include "autoloader.php";
+
 include  "codes/form.php";
 ?>
 <!DOCTYPE html>
@@ -136,7 +137,7 @@ include  "codes/form.php";
                             <span>Adresa </span><br />
                             <input type="text" class="form-control" name="mesto" placeholder="Město" maxlength="30" required> <br />
                             <input type="text" class="form-control" name="ulice" placeholder="Ulice a číslo popisné" maxlength="40" required> <br />
-                            <input type="text" class="form-control" name="psc" placeholder="PSČ" maxlength="5" required> <br />
+                            <input type="number" class="form-control" name="psc" placeholder="PSČ" maxlength="5" required> <br />
                     </div>
                     <div class="form-layer-form-2" class="form-group">
                         <span>Název skladby </span><br />

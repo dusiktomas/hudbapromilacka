@@ -1,5 +1,139 @@
+<!DOCTYPE html>
 <html>
+<head>
+<meta charset="utf-8"> 
+<link rel="stylesheet" href="http://localhost/hudbapromilacka/hudbapromilacka/css/bootstrap.css">
+<link rel="stylesheet" href="templates/css/styles.css">
+<script src="http://localhost/hudbapromilacka/hudbapromilacka/js/bootstrap.min.js"></script>
 
-<h1>Nazdar {{the}}</h1>
+</head>
+<body>
+
+	<h1>Logy</h1>
+	<div class="overflow">
+	<table class="table table-striped overflow" style="font-size: 10px;">
+	<tr>
+		<td><strong>ID</strong></td>
+		<td><strong>DATUM</strong></td>
+		<td><strong>MSG<strong></td> 
+	</tr>
+	{% for log in adminer.getAllLogs %}
+		{% if log.type == '1'%}
+			<tr class="danger">
+		{% else %}
+			<tr class="success">
+		{% endif %}
+			<td>{{log.id}}</td>
+			<td>{{log.datum}}</td>
+			<td>{{log.msg}}</td>
+		  </tr>
+	{%endfor%}
+	</table>
+</div>
+
+	<h1>Errory</h1>
+	<div class="overflow">
+	<table class="table table-striped" style="font-size: 10px;">
+	<tr>
+		<td><strong>ID</strong></td>
+		<td><strong>DATUM</strong></td>
+		<td><strong>MSG<strong></td> 
+	</tr>
+	{% for log in adminer.getAllErrors %}
+		{% if log.type == '1'%}
+			<tr class="danger">
+		{% else %}
+			<tr class="success">
+		{% endif %}
+			<td>{{log.id}}</td>
+			<td>{{log.datum}}</td>
+			<td>{{log.msg}}</td>
+		  </tr>
+	{%endfor%}
+	</table>
+</div>
+	<h1>Skladby</h1>
+	<div class="overflow">
+	<table class="table table-striped" style="font-size: 10px">
+	<tr>
+		<td><strong>ID</strong></td>
+		<td><strong>NÁZEV</strong></td>
+		<td><strong>CESTA<strong></td>
+		<td><strong>KOUPENO<strong></td> 
+	</tr>
+	{% for audio in adminer.getAllAudio %}
+		{% if audio.koupeno == '1'%}
+			<tr class="success">
+		{% else %}
+			<tr>
+		{% endif %}
+			<td>{{audio.id}}</td>
+			<td>{{audio.nazev}}</td>
+			<td>{{audio.cesta}}</td>
+			<td>{{audio.koupeno}}</td>
+		  </tr>
+	{%endfor%}
+	</table>
+</div>
+
+<h1>Objednávky</h1>
+<div class="overflow">
+	<table class="table table-striped" style="font-size: 10px;">
+	<tr>
+		<td><strong>ID</strong></td>
+		<td><strong>TYP</strong></td>
+		<td><strong>DATUM_OBJEDNANI<strong></td>
+		<td><strong>CENA</strong></td>
+		<td><strong>ZAKAZNIK<strong></td> 
+		<td><strong>AUDIO<strong></td>
+		
+	</tr>
+	{% for order in adminer.getAllOrders %}
+		{% if order.audio == '0'%}
+			<tr class="danger">
+		{% else %}
+			<tr>
+		{% endif %}
+			<td>{{order.id}}</td>
+			<td>{{order.typ}}</td>
+			<td>{{order.datum_objednani}}</td>
+			<td>{{order.cena}}</td>
+			<td>{{order.customer}}</td>
+			<td>{{order.audio}}</td>
+		  </tr>
+	{%endfor%}
+	</table>
+</div>
+	<h1>Zákazníci</h1>
+	<div class="overflow">
+	<table class="table table-striped" style="font-size: 10px">
+	<tr>
+		<td><strong>ID</strong></td>
+		<td><strong>JMENO</strong></td>
+		<td><strong>PRIJMENI<strong></td>
+		<td><strong>EMAIL</strong></td>
+		<td><strong>MESTO<strong></td> 
+		<td><strong>ULICE<strong></td>
+		<td><strong>PSČ<strong></td>
+		
+	</tr>
+	{% for customer in adminer.getAllCustomers %}
+		{% if customer.audio == '0'%}
+			<tr class="danger">
+		{% else %}
+			<tr>
+		{% endif %}
+			<td>{{customer.id}}</td>
+			<td>{{customer.jmeno}}</td>
+			<td>{{customer.prijmeni}}</td>
+			<td>{{customer.email}}</td>
+			<td>{{customer.mesto}}</td>
+			<td>{{customer.ulice}}</td>
+			<td>{{customer.psc}}</td>
+		  </tr>
+	{%endfor%}
+	</table>
+</div>
+</body>
 
 </html>

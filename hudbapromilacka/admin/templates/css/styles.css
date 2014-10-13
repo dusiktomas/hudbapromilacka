@@ -1,0 +1,9 @@
+.overflow {
+	overflow: auto;
+	overflow-y: auto;
+	-ms-overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 400px;
+	padding: 8px;
+	border-bottom: 1px gray solid;
+}
