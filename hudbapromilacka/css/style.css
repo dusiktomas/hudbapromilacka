@@ -1,29 +1,39 @@
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+	background-color: rgb(49,51,62);
 }
-a {
-    color: rgb(51,51,51);
-    text-decoration: none;
+h1 {
+	font-size: 67px;
 }
 a:hover {
     color: rgb(204,51,51);
 }
+
 table {
     border-collapse: collapse;
 }
 .border-link {
     border-bottom: 0 solid #f37736;
 }
-.fb-like-box {
+.fb-like{
+	float: right;
+	margin-top: -23px;
+	margin-right: 5px;
+}
+.player-information {
+	opacity: 0.9;
+	font-family: 'Lobster', sans-serif;
+	font-size: 18px;
+	width: 350px;
+	height: 350px;
     margin-top: 168px;
-    margin-left: 100px;
-    float: left;
-    background-color: whitesmoke;
+    margin-right: 50px;
+    float: right;
 }
 /* HEADER */
 
 header {
-    //border: 1px gray solid;
+	background-color: white;
     width: 100%;
     height: 112px;
     padding-bottom: 15px;
@@ -36,6 +46,8 @@ header {
     font-size: 20px;
 }
 .header-link {
+	color: rgb(51,51,51);
+    text-decoration: none;
     padding: 10px;
     border-bottom: 0 solid #f37736;
 }
@@ -54,6 +66,27 @@ header {
 .header-img {
     width: 600px;
 }
+
+/* STATUS */
+.status-report {
+	border-radius: 4px;
+    width: 800px;
+    height: 50px;
+	margin-left: auto;
+    margin-right: auto;
+	background-color: #99FF99;
+	font-size: 16px;
+}
+.status-report-false{
+    width: 800px;
+    height: 50px;
+	margin-left: auto;
+    margin-right: auto;
+	background-color: #FF9999;
+	font-size: 16px;
+}
+
+
 /*  INFORMACE LAYER */
 .informace-layer-content{
     margin-left: auto;
@@ -64,8 +97,11 @@ header {
     border-top: 1px gray solid;
     width: 100%;
     height: 550px;
-    background-color: #fff;
+    background-color: white;
 	display: none;
+}
+.informace-layer-zpet {
+	float: right;
 }
 .informace-nadpis {
     background-color: #fff;
@@ -75,7 +111,7 @@ header {
 .information-layer {
     //border: 1px gray solid;
     width: 100%;
-    height: 550px;
+    height: 440px;
     background-color: rgb(204,51,51);
 }
 
@@ -83,12 +119,15 @@ header {
     margin-left: auto;
     margin-right: auto;
     padding-top: 57px;
-    width: 70em;
+    width: 34em;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 32px;
+	color: whitesmoke;
 }
 .information-layer-img-arrow {
     margin-left: auto;
     margin-right: auto;
-    padding-top: 50px;
+    margin-top: 18px;
     width: 7.5em;
 }
 
@@ -97,10 +136,12 @@ header {
 /* PLAYER LAYER */
 
 .player-layer {
+	background-color: white;
     width: 100%;
     height: 670px;
 }
 .player-layer-player {
+	background-color: white;
     opacity: 0.95;
     margin-left: auto;
     margin-right: auto;
@@ -129,12 +170,8 @@ header {
 .player-playlist:hover {
 	opacity: 1;
 }
-.player-layer-border {
-    border-bottom: 1px gray solid;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-}
+
+
 .player-layer-img-arrow {
     margin-left: auto;
     margin-right: auto;
@@ -149,7 +186,7 @@ header {
     background-color: #fff; 
 }
 .player-layer-audio-table tr:nth-child(even) {
-    background-color: #ddd;
+    background-color: #F8F8F8;
 }
 
 /* KONEC PLAYERU */
@@ -157,6 +194,7 @@ header {
 /* CHOICE LAYER */
 
 .choice-layer {
+	background-color: white;
     width: 100%;
     height: 650px;
     display: none;
@@ -231,20 +269,20 @@ header {
     color: whitesmoke;
     display: none;
     width: 100%;
-    height: 650px;
+    height: 850px;
     background-color: rgb(204,51,51);
 }
 .form-layer-img-objednavka {
     margin-left: auto;
     margin-right: auto;
-    padding-top: 68px;
+    padding-top: 20px;
     width: 20em;
 }
 .form-layer-form {
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-	width: 540px;
+	width: 630px;
     height: 450px;
 }
 .form-layer-order-counter{
@@ -267,34 +305,44 @@ header {
 .form-layer-form-2 {
     float: right;
 }
-
+.order-sucess {
+	padding-top: 15px;
+}
 /* KONEC FORM LAYERU */ 
 footer {
     //border: 1px gray solid;
     width: 100%;
-    height: 150px;
+    height: 50px;
     background-color: rgb(49,51,62);
 }
 .footer-content {
     margin-left: auto;
     margin-right: auto;
-    width: 13.5em;
+    width: 15.5em;
 }
 .footer-content-table {
-    float: left;
     opacity: 0.8;
-    padding-top: 60px;
+    padding-top: 30px;
     width: 270px;
     color: whitesmoke;
-    margin-right: 250px;
+    margin-left: 50px;
+    margin-right: auto;
 }
 .footer-content-links {
     margin-left: auto;
-    margin-right: auto;
-    width: 50em;
+    margin-right: -280px;
+	margin-top: -30px;
     opacity: 0.8;
-    padding-top: 60px;
     color: whitesmoke;
+	float: right;
+}
+.footer-info {
+	opacity: 0.8;
+    margin-left: -400px;
+    margin-right: auto;
+	margin-top: 0px;
+    color: whitesmoke;
+	float: left;
 }
 .footer-link {
     opacity: 0.5;

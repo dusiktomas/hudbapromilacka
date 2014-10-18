@@ -16,16 +16,20 @@ $(document).ready(function (){
     $(".border-link").on("mouseleave", function (){
        $(this).animate({"borderWidth" : "0"}, 120);
     });
-
-    
-    
+	
     //HEADER EFFECT 
 	$("#informace-link").on('click', function(){
 	  $('.informace-layer').toggle(400);
 	})
-;	$(".information-layer-img-pc").on("click", function (){
+;	$(".information-layer-choice-click").on("click", function (){
 		scrollTo('player-layer');
 	});
+	$(".information-layer-information-click").on('click', function(){
+	  $('.informace-layer').toggle(400);
+	})
+	$(".informace-layer-zpet").on('click', function(){
+	  $('.informace-layer').toggle(400);
+	})
     $(".header-link").on("mouseenter", function (){
        $(this).animate({"borderWidth" : "2"}, 120);
     });
@@ -72,7 +76,24 @@ $(document).ready(function (){
 	  orderCounter.empty();
 	  orderCounter.append($(this).val().length + '/255');
 	});
-
+	$(".deployment-checkbox").on('click', function () {
+		if( ! $(this).is(':checked')){
+			$(".deployment-adress").append("<span>Doručovací Adresa</span><br /><input type='text' class='form-control' name='dorucovaci_mesto' placeholder='Město' maxlength='30' required> <br /><input type='text' class='form-control' name='dorucovaci_ulice' placeholder='Ulice a číslo popisné' maxlength='40' required> <br /><input type='number' class='form-control' name='dorucovaci_psc' placeholder='PSČ' maxlength='5' required> <br />");
+		}else{
+			$(".deployment-adress").empty();
+		}
+	});
+	/*
+		$(".doprava-select").on('change', function (){
+			var doprava = $(".doprava-select option:selected").text();
+			var totalPrice = $(".total-price").text();
+			if(doprava.indexOf('Dobírka') != -1){
+				$(".total-price").text(parseFloat(totalPrice) + 40);
+			}else{
+				$(".total-price").text(totalPrice - 40);
+			}
+		});
+	*/
     
     //Icons effect and click
     var icon_progress = false;
@@ -98,13 +119,13 @@ $(document).ready(function (){
             });
             if ($(this).data("type") == "Dárkový Balíček") { 
 				$(".form-wish").attr('placeholder', 'Do tohoto pole napište přání, které bude v obalu.');
-				$(".total-price").text('674');
+				$(".total-price").text('539');
                 $("#text-balicek").animate({borderWidth: 0}, 120);
                 $(".choice-layer-balicek-content").slideUp(200);
             }
             if ($(this).data("type") == "Skladba") { 
 				$(".form-wish").attr('placeholder', 'Pro přání si vyberte typ Dárkový Balíček');
-				$(".total-price").text('499');
+				$(".total-price").text('399');
                 $("#text-skladba").animate({borderWidth: 0}, 120);
                 $(".choice-layer-skladba-content").slideUp(200);
             }

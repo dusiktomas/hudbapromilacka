@@ -26,6 +26,11 @@ class Logger extends Database{
 	return false;
   }
   
+  public static function setErrorSolved($id){
+	$query = "UPDATE logs SET vyreseno = '1' WHERE id = '".$id."'";
+	self::handler()->query($query);
+  }
+  
   private function addErrorLog(){
     $this->query = "
 	  INSERT INTO logs(datum, type, msg) 

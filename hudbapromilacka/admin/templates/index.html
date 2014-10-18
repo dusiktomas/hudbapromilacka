@@ -4,13 +4,14 @@
 <meta charset="utf-8"> 
 <link rel="stylesheet" href="http://localhost/hudbapromilacka/hudbapromilacka/css/bootstrap.css">
 <link rel="stylesheet" href="templates/css/styles.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <script src="http://localhost/hudbapromilacka/hudbapromilacka/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 
 	<h1>Logy</h1>
-	<div class="overflow">
+	<div class="overflow logs">
 	<table class="table table-striped overflow" style="font-size: 10px;">
 	<tr>
 		<td><strong>ID</strong></td>
@@ -31,29 +32,29 @@
 	</table>
 </div>
 
-	<h1>Errory</h1>
-	<div class="overflow">
-	<table class="table table-striped" style="font-size: 10px;">
-	<tr>
-		<td><strong>ID</strong></td>
-		<td><strong>DATUM</strong></td>
-		<td><strong>MSG<strong></td> 
-	</tr>
-	{% for log in adminer.getAllErrors %}
-		{% if log.type == '1'%}
+	
+	<div class="errorsoverflow">
+		<h1>Errory</h1>
+		<table class="table table-striped" style="font-size: 10px;">
+		<tr>
+			<td><strong>ID</strong></td>
+			<td><strong>VYŘEŠIT</strong></td>
+			<td><strong>DATUM</strong></td>
+			<td><strong>MSG<strong></td> 
+		</tr>
+		{% for log in adminer.getAllErrors %}
 			<tr class="danger">
-		{% else %}
-			<tr class="success">
-		{% endif %}
-			<td>{{log.id}}</td>
-			<td>{{log.datum}}</td>
-			<td>{{log.msg}}</td>
-		  </tr>
-	{%endfor%}
-	</table>
-</div>
+				<td>{{log.id}}</td>
+				<td><a href="?log_id={{log.id}}">Vyřešeno</a></td>
+				<td>{{log.datum}}</td>
+				<td>{{log.msg}}</td>
+			</tr>
+		{%endfor%}
+		</table>
+	</div>
+	
 	<h1>Skladby</h1>
-	<div class="overflow">
+	<div class="overflow skladby">
 	<table class="table table-striped" style="font-size: 10px">
 	<tr>
 		<td><strong>ID</strong></td>
@@ -75,7 +76,6 @@
 	{%endfor%}
 	</table>
 </div>
-
 <h1>Objednávky</h1>
 <div class="overflow">
 	<table class="table table-striped" style="font-size: 10px;">
@@ -86,6 +86,7 @@
 		<td><strong>CENA</strong></td>
 		<td><strong>ZAKAZNIK<strong></td> 
 		<td><strong>AUDIO<strong></td>
+		<td><strong>JMENO OSOBY<strong></td>
 		
 	</tr>
 	{% for order in adminer.getAllOrders %}
@@ -100,6 +101,7 @@
 			<td>{{order.cena}}</td>
 			<td>{{order.customer}}</td>
 			<td>{{order.audio}}</td>
+			<td>{{order.jmeno_osoby}}</td>
 		  </tr>
 	{%endfor%}
 	</table>

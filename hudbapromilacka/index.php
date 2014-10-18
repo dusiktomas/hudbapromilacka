@@ -1,5 +1,6 @@
 <?php 
-
+@session_start();
+header('Content-Type: text/html; charset=utf-8');
 include "autoloader.php";
 
 include  "codes/form.php";
@@ -10,58 +11,78 @@ include  "codes/form.php";
         <title>HudbaProMiláčka - Daruj svému nejblížší originální dárek</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
         <link type="text/css" href="player/demos/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" />
         <script src="scripts/jquery-1.11.1.js"></script>
 		<script src="js/bootstrap.min.js"></script>
         <script src="player/jquery.jplayer.min.js"></script>
         <script src="player/add-on/jplayer.playlist.min.js"></script>
-        <script src="scripts/all-scripts.js"></script>
+        <script src="scripts/all-scripts.js"></script>	
         <link rel="icon" type="image/ico" href="favicon.ico">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lobster|Open+Sans+Condensed:300|Roboto&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/cs_CZ/sdk.js#xfbml=1&appId=195768110484981&version=v2.0";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/cs_CZ/sdk.js#xfbml=1&appId=195768110484981&version=v2.0";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
         <header>
             <span class="header-links">
+				<a class="header-link information-layer-information-click" id="skladby-link" href="#">CENÍK</a> |
+				<a class="header-link information-layer-choice-click" id="skladby-link" href="#">VÝBĚR SKLADEB</a> |
                 <a class="header-link" id="informace-link" href="#">INFORMACE</a> |
-                <a class="header-link" href="">KONTAKT</a> |
-                <a class="header-link" href="">JEDEN</a>
+                <a class="header-link" href="mailto: info@hudbapromilacka.cz">KONTAKT</a>
             </span>
             <div class="header-img">
                 <a href="#"><img class="header-logo" src="images/logo.png"></a>
                 <span class="header-text">Klikněte a vyberte si skladbu.</span>
             </div>
         </header>
+		
+		
+			<?php include "codes/reporter.php";?>
+		
 		<div class="informace-layer">
 			<div class="informace-layer-content">
+				<div class="informace-layer-zpet"><a href="#">Zpět</a></div>
 				<h2 class="informace-nadpis">Informace o skladbách</h2>
 				<p>Veškerý hudební materiál je komponován zkušenými autory, kteří se aktivně podílí na hudební tvorbě pro české
 				i zahraniční interprety a televizní reklamy.
 				Každá skladba je jedinečná, to znamená, že si můžete být jistí, že ji neuslyšíte nikde jinde a vlastníte tak originální kus.</p>
-				<h2 class="informace-nadpis">Informace o skladbách</h2>
-				<p>Veškerý hudební materiál je komponován zkušenými autory, kteří se aktivně podílí na hudební tvorbě pro české
-				i zahraniční interprety a televizní reklamy.
-				Každá skladba je jedinečná, to znamená, že si můžete být jistí, že ji neuslyšíte nikde jinde a vlastníte tak originální kus.</p>
+				<h2 class="informace-nadpis informace-cenik">Ceník</h2>
+				<p>Cena za dárkový balíček, který obsahuje Vaše CD stojí <b>499 Kč</b>.
+				Cena za zaslanou skladbu na email v příloze stojí <b>399 Kč</b>.</p>
+				
 			</div>
         </div>
         <div class="information-layer">
-            <div class="information-layer-img-pc"><img src="images/img-pc.png"></div>
+			<div class="fb-like" data-href="https://www.facebook.com/Hudbapromilacka" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
+            <div class="information-layer-img-pc">
+				<center><h1>Dopřejte vašemu blízkému dárek</h1> v podobě originální skladby od našich autorů</center><br><br><br>
+				<a href="#" class="header-link information-layer-choice-click" style="color: whitesmoke; margin-left: 25px;">Vyber skladbu</a>
+				<a href="#" class="header-link information-layer-information-click" style="color: whitesmoke; margin-left: 565px;">Více informací</a>
+			</div>
             <div class="information-layer-img-arrow"><a href="#" alt="Neco"><img class="arrow" alt="Vyberte si skladbu" title="Vyberte si skladbu" data-scroll="player-layer" src="images/arrow.png"></a></div>    
         </div>
 		
         <!--ZAČÁTEK PLAYERU !-->
         <div id="player-layer" class="player-layer">
-            <div class="fb-like-box" data-href="https://www.facebook.com/Hudbapromilacka" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
-            <div class="player-layer-img-vyber-skladby"><img src="images/vyber-skladby.jpg"></div>
+            <div class="player-information">
+				Každá skladba je <b>jedinečná</b>,<br> to znamená, že
+				vlastníte originální kus. <br>
+				Po zadání objednávky
+				bude <br>skladba vymazána z playlistu a <br> nebude si jí moci <br>
+				zakoupit nikdo jiný.
+			</div>
+			<div class="player-layer-img-vyber-skladby"><img src="images/vyber-skladby.jpg"></div>
             <div class="player-layer-player">
                 <div id="jquery_jplayer_1" class="jp-jplayer"></div>
                  <div id="jp_container_1" class="jp-audio">
@@ -104,10 +125,8 @@ include  "codes/form.php";
                    </div>
                  </div>
                 <div class="player-playlist"><?php include "codes/audio.php"; ?></div>
-                <div class="player-layer-img-arrow"><img class="arrow" alt="Po vybrání skladby si vyberte typ objednávky" title="Po vybrání skladby si vyberte typ objednávky" data-scroll="choice-layer" src="images/arrow.png"></div>    
             </div>
         </div>
-        <div class="player-layer-border"></div>
         <!--KONEC PLAYERU !-->
         <div id="choice-layer" class="choice-layer">
             <div class="choice-layer-img-zpusoby"><img src="images/zpusoby.jpg"></div>
@@ -117,15 +136,14 @@ include  "codes/form.php";
             </div>
             <div class="choice-layer-icons">
                 <div class="icon choice-layer-img-skladba" data-type="Skladba"><a href="#"><img src="images/icon-skladba.jpg"></a></div>
-                <div class="choice-layer-skladba-content">Vybraná skladba Vám bude zaslána na uvedený email v příloze. Tato možnost je rychlá a levná.<br /> Celková cena za jednu skladbu je <b>499</b> (s DPH).</div>
+                <div class="choice-layer-skladba-content">Vybraná skladba Vám bude zaslána na uvedený email v příloze. Tato možnost je rychlá a levná.<br /> Celková cena za jednu skladbu je <b>399</b> Kč.</div>
                 <div class="icon choice-layer-img-balicek" data-type="Dárkový Balíček"><a href="#"><img src="images/icon-balicek.jpg"></a></div>
-                <div class="choice-layer-balicek-content">Tento balíček obsahuje CD s potiskem v obalu, které obsahuje Vaše přání pro danou osobu. Na obalu CD je napsané jméno, pro kterou osobu je CD určeno. <br /> Celková cena za jeden dárkový balíček je <b>599</b> (s DPH) + poštovné .</div>
+                <div class="choice-layer-balicek-content">Tento balíček obsahuje CD s potiskem v obalu. Na zadní straně obalu je Vaše přání pro danou osobu. Na obalu a na CD je napsané jméno, pro kterou osobu je CD určeno. <br /> Celková cena za jeden dárkový balíček je <b>499</b> Kč + poštovné .</div>
             </div>
-            <div class=" choice-layer-img-arrow"><img class="arrow" alt="Po vybrání typu objednávky vyplňte formulář" title="Po vybrání typu objednávky vyplňte formulář" data-type="vyber" data-scroll="form-layer" src="images/arrow.png"></div>  
         </div>
         <div id="form-layer" class="form-layer">
             <div class="form-layer-img-objednavka"><img src="images/objednavka.jpg"></div>
-			<form method="POST" role="form" class="form-horizontal">
+			<form method="POST" action="objednavka/index.php" class="form-horizontal">
             <div class="form-layer-form">
                     <div class="form-layer-form-1" class="form-group">
                             <span>Typ objednávky </span><br />
@@ -134,23 +152,34 @@ include  "codes/form.php";
                             <input type="text" class="form-control" name="jmeno" placeholder="Jméno" maxlength="16" required> <br />
                             <input type="text" class="form-control" name="prijmeni" placeholder="Přijmení" maxlength="16" required> <br />
                             <input type="email" class="form-control" name="email" placeholder="Email" maxlength="40" required> <br />
-                            <span>Adresa </span><br />
+                            <span>Fakturační adresa</span><br />
                             <input type="text" class="form-control" name="mesto" placeholder="Město" maxlength="30" required> <br />
                             <input type="text" class="form-control" name="ulice" placeholder="Ulice a číslo popisné" maxlength="40" required> <br />
                             <input type="number" class="form-control" name="psc" placeholder="PSČ" maxlength="5" required> <br />
+							<input type="checkbox" class="deployment-checkbox" name="adress-check-box" checked> Doručovací adresa je shodná s fakturační<br/><br/>
+							<div class="deployment-adress">
+								
+							</div>
+							
                     </div>
                     <div class="form-layer-form-2" class="form-group">
                         <span>Název skladby </span><br />
                         <input type="text" class="form-control" name="skladba" id="form-audio-name" placeholder="Název skladby" readOnly="true"> <br />
+						<span>Jméno obdarované osoby</span>
+							<input type="text" class="form-control" name="jmeno_osoby" placeholder="Jmeno osoby" maxlength="30" required> <br />
                         <div class="form-layer-form-2-wish">
                             <span>Přání </span><br />
-                            <textarea name="prani" class="form-control form-wish" maxlength="255" placeholder="Do tohoto pole napište přání, které bude v obalu."></textarea><br />
+                            <textarea name="prani" class="form-control form-wish" maxlength="255" placeholder="Do tohoto pole napište přání, které bude na obalu."></textarea><br />
                         </div>
-						<input type="checkbox" name="check-box" required> Souhlasím s pravidly<br/>
+						Způsob platby
+						<select name="zpusob_platby" class="form-control doprava-select">
+							<option value="Dobírka">Dobírka (40 Kč)</option>
+							<option value="Platba předem">Platba předem (0 Kč)</option>
+						</select><br>
+						<span>Zásilky jsou posílány českou poštou.<br /><br />
+						<input type="checkbox" name="agreement-check-box" required> Souhlasím s pravidly<br/><br />
 						<div class="form-layer-order-counter"></div>
-						<span>Zásilky jsou na dobírku posílány českou poštou.<br />
-						Celková cena je <strong><span class="total-price"></span></strong> ,- Kč (s DPH). <br />
-                        <button type="submit" class="btn btn-default">Objednat</button>
+                        <button type="submit" class="btn btn-default">Další krok</button>
                     </div>
                 </form>
 				</div>
@@ -159,9 +188,9 @@ include  "codes/form.php";
         <footer>
             <div class="footer-content">
                 <div class="footer-content-table">
-                <table>
-                    <td colspan="5">©2014 All rights reserved</td>
-                </table>
+					<table>
+						<td colspan="5">©2014 HudbaProMilacka.cz</td>
+					</table>
                 </div>
                 <div class="footer-content-links">
                     <table>
@@ -170,5 +199,15 @@ include  "codes/form.php";
                 </div>
             </div>
         </footer>
+		
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-35201501-2', 'auto');
+		  ga('send', 'pageview');
+		</script>
     </body>
 </html>

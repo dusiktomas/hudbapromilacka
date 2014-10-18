@@ -4,7 +4,7 @@ class Database {
 	
     public static function handler(){
 		if(self::$db === Null){
-			$mysqli = new mysqli('localhost', 'root', '', 'hudbamilacek');
+			$mysqli = new mysqli('localhost', 'root', '', 'hudbapromilacka');
 			if ($mysqli->connect_error) {
 				die('Connect Error (' . $mysqli->connect_errno . ') '
 						. $mysqli->connect_error);

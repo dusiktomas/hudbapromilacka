@@ -5,6 +5,7 @@ $map = array(
   'classes/Logger.php',
   'classes/Redirection.php',
   'classes/Adminer.php',
+  'classes/Prices.php',
 );
 
 foreach($map as $file){

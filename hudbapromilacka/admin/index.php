@@ -9,4 +9,12 @@ $twig = new Twig_Environment($loader, array(
 ));
 $template = $twig->loadTemplate('index.html');
 
-echo $template->render(array('the' => 'variables', 'go' => 'here', 'adminer' => new Adminer()));
+
+if(isset($_GET['log_id'])){
+	$id = $_GET["log_id"];
+	Logger::setErrorSolved($id);
+	header("Location: /hudbapromilacka/hudbapromilacka/admin/");
+}
+echo $template->render(array('adminer' => new Adminer()));
+
+

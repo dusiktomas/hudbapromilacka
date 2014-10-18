@@ -2,7 +2,6 @@
 include 'classes/controller/Order.php';
 include 'classes/controller/Audio.php';
 include 'classes/controller/Customer.php';
-include 'classes/controller/Prices.php';
 
 
 
@@ -17,6 +16,7 @@ if(isset($_POST["jmeno"]) && isset($_POST["mesto"])){
     $datum = date("D:m:Y");
     $skladba = htmlspecialchars($_POST["skladba"]);
     $prani = htmlspecialchars($_POST["prani"]);
+	$jmeno_osoby = htmlspecialchars($_POST["jmeno_osoby"]);
 	
 	$audio = Audio::getAudioIdByName($skladba);
 	
@@ -42,8 +42,9 @@ if(isset($_POST["jmeno"]) && isset($_POST["mesto"])){
 	$orderArray = array(
 		'typ' => $typ,
 		'prani' => $prani,
+		'jmeno_osoby' => $jmeno_osoby,
 		'audio' => $audio,
-		'cena' => Prices::getAudioPrice(),
+		'cena' => Prices::getPrice('skladba'),
 		'datum_objednani' => date('d-m-y:H:i'),
 		'customer' => $customer->getId(),
 	);
@@ -57,6 +58,7 @@ if(isset($_POST["jmeno"]) && isset($_POST["mesto"])){
 	if(!$audio->isSold()){
 	  return Redirection::orderRedirectToError('audioNotSold');
 	}
+	
 	Redirection::orderRedirectToSuccess();	
 }
 

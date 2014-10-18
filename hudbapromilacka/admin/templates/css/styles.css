@@ -2,8 +2,20 @@
 	overflow: auto;
 	overflow-y: auto;
 	-ms-overflow-y: auto;
-	overflow-x: hidden;
+	overflow-x: auto;
 	max-height: 400px;
 	padding: 8px;
 	border-bottom: 1px gray solid;
+}
+
+.logs {
+	top: 5px;
+	float: left;
+}
+.errors{
+	top: 5px;
+	width: 550px;
+}
+.skladby {
+	width: 550px;
 }

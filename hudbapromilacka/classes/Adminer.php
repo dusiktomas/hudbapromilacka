@@ -3,7 +3,7 @@ class Adminer extends Database{
 
   public function getAllLogs(){
     $array = array();
-    $query = $this->query('SELECT * FROM logs ORDER BY id DESC');
+    $query = $this->query('SELECT * FROM logs WHERE type = "0" ORDER BY id DESC');
 	while($row = $query->fetch_assoc()){
 	  $array[] = $row;
 	}
@@ -18,7 +18,7 @@ class Adminer extends Database{
 	}
 	return $array;
   }
-  
+
   public function getAllOrders(){
     $array = array();
     $query = $this->query('SELECT * FROM orders ORDER BY id DESC');
@@ -29,7 +29,7 @@ class Adminer extends Database{
   }
   public function getAllErrors(){
     $array = array();
-    $query = $this->query("SELECT * FROM logs WHERE type = '1' ORDER BY id DESC");
+    $query = $this->query("SELECT * FROM logs WHERE type = '1' AND vyreseno = '0' ORDER BY id DESC");
 	while($row = $query->fetch_assoc()){
 	  $array[] = $row;
 	}
