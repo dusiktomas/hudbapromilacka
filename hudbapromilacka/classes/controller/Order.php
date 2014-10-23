@@ -4,9 +4,9 @@ class Order extends Database{
 
   public function __construct ($args){
 	$this->query = "
-	  INSERT INTO orders(typ, prani, audio, cena, datum_objednani, customer, jmeno_osoby) 
+	  INSERT INTO orders(typ, prani, audio, cena, datum_objednani, customer, jmeno_osoby, poznamka) 
 	  VALUES ('".$args['typ']."', '".$args['prani']."', '".$args['audio']."',
-	  '".$args['cena']."', '".$args['datum_objednani']."', '".$args['customer']."', '".$args['jmeno_osoby']."');
+	  '".$args['cena']."', '".$args['datum_objednani']."', '".$args['customer']."', '".$args['jmeno_osoby']."', '".$args['poznamka']."');
 	"; 
 	if(self::handler()->query($this->query)){
 	  $id = self::handler()->query('SELECT LAST_INSERT_ID()');

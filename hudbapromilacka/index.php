@@ -3,7 +3,6 @@
 header('Content-Type: text/html; charset=utf-8');
 include "autoloader.php";
 
-include  "codes/form.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,9 +46,6 @@ include  "codes/form.php";
             </div>
         </header>
 		
-		
-			<?php include "codes/reporter.php";?>
-		
 		<div class="informace-layer">
 			<div class="informace-layer-content">
 				<div class="informace-layer-zpet"><a href="#">Zpět</a></div>
@@ -75,13 +71,18 @@ include  "codes/form.php";
 		
         <!--ZAČÁTEK PLAYERU !-->
         <div id="player-layer" class="player-layer">
+			<div class="player-information-price">
+				Cena jedné skladby je <b>399 Kč</b>.
+			</div>
+			
             <div class="player-information">
 				Každá skladba je <b>jedinečná</b>,<br> to znamená, že
 				vlastníte originální kus. <br>
 				Po zadání objednávky
 				bude <br>skladba vymazána z playlistu a <br> nebude si jí moci <br>
-				zakoupit nikdo jiný.
+				zakoupit <b>nikdo</b> jiný.
 			</div>
+			
 			<div class="player-layer-img-vyber-skladby"><img src="images/vyber-skladby.jpg"></div>
             <div class="player-layer-player">
                 <div id="jquery_jplayer_1" class="jp-jplayer"></div>
@@ -125,6 +126,9 @@ include  "codes/form.php";
                    </div>
                  </div>
                 <div class="player-playlist"><?php include "codes/audio.php"; ?></div>
+				<div class="player-information-click">
+				Kliknutím na název skladbu přehrajete.
+				</div>
             </div>
         </div>
         <!--KONEC PLAYERU !-->
@@ -146,30 +150,28 @@ include  "codes/form.php";
 			<form method="POST" action="objednavka/index.php" class="form-horizontal">
             <div class="form-layer-form">
                     <div class="form-layer-form-1" class="form-group">
-                            <span>Typ objednávky </span><br />
-							<input type="text" class="form-control" name="typ" id="form-select-content" readOnly="true"><br />
-                            <span>Kontaktní údaje</span> <br/>
-                            <input type="text" class="form-control" name="jmeno" placeholder="Jméno" maxlength="16" required> <br />
-                            <input type="text" class="form-control" name="prijmeni" placeholder="Přijmení" maxlength="16" required> <br />
-                            <input type="email" class="form-control" name="email" placeholder="Email" maxlength="40" required> <br />
-                            <span>Fakturační adresa</span><br />
-                            <input type="text" class="form-control" name="mesto" placeholder="Město" maxlength="30" required> <br />
-                            <input type="text" class="form-control" name="ulice" placeholder="Ulice a číslo popisné" maxlength="40" required> <br />
-                            <input type="number" class="form-control" name="psc" placeholder="PSČ" maxlength="5" required> <br />
+							<span>Typ objednávky </span><small style="margin-left: 113px; "><a href="#" class="choice-repick">Změnit typ</a></small><br />
+							<input type="text" class="form-control" value="<?php echo @$_SESSION['typ']; ?>" name="typ" id="form-select-content" readOnly="true"><br />
+							<span>Kontaktní údaje</span> <br/>
+							<input type="text" class="form-control" value="<?php echo @$_SESSION['jmeno']; ?>" name="jmeno" placeholder="Jméno" maxlength="16" required> <br />
+							<input type="text" class="form-control" value="<?php echo @$_SESSION['prijmeni']; ?>" name="prijmeni" placeholder="Přijmení" maxlength="16" required> <br />
+							<input type="email" class="form-control" value="<?php echo @$_SESSION['email']; ?>" name="email" placeholder="Email" maxlength="40" required> <br />
+							<span>Fakturační adresa</span><br />
+							<input type="text" class="form-control" name="ulice" value="<?php echo @$_SESSION['ulice']; ?>" placeholder="Ulice a číslo popisné" maxlength="40" required> <br />
+							<input type="text" class="form-control" name="mesto" value="<?php echo @$_SESSION['mesto']; ?>" placeholder="Město" maxlength="30" required> <br />
+							<input type="number" class="form-control" name="psc" value="<?php echo @$_SESSION['psc']; ?>" placeholder="PSČ" maxlength="5" required> <br />
 							<input type="checkbox" class="deployment-checkbox" name="adress-check-box" checked> Doručovací adresa je shodná s fakturační<br/><br/>
 							<div class="deployment-adress">
-								
 							</div>
-							
                     </div>
                     <div class="form-layer-form-2" class="form-group">
-                        <span>Název skladby </span><br />
-                        <input type="text" class="form-control" name="skladba" id="form-audio-name" placeholder="Název skladby" readOnly="true"> <br />
+                        <span>Název skladby </span><small style="margin-left: 100px;"><a href="#" class="information-layer-choice-click">Změnit skladbu</a></small><br />
+                        <input type="text" class="form-control" value="<?php echo @$_SESSION['skladba']; ?>" name="skladba" id="form-audio-name" placeholder="Název skladby" readOnly="true"> <br />
 						<span>Jméno obdarované osoby</span>
-							<input type="text" class="form-control" name="jmeno_osoby" placeholder="Jmeno osoby" maxlength="30" required> <br />
+							<input type="text" class="form-control jmeno_osoby" value="<?php echo @$_SESSION['jmeno_osoby']; ?>" name="jmeno_osoby" placeholder="Jmeno osoby" maxlength="30" required> <br />
                         <div class="form-layer-form-2-wish">
                             <span>Přání </span><br />
-                            <textarea name="prani" class="form-control form-wish" maxlength="255" placeholder="Do tohoto pole napište přání, které bude na obalu."></textarea><br />
+                            <textarea name="prani" class="form-control form-wish" maxlength="255" placeholder="Do tohoto pole napište přání, které bude na obalu."><?php echo @$_SESSION['prani']; ?></textarea><br />
                         </div>
 						Způsob platby
 						<select name="zpusob_platby" class="form-control doprava-select">
@@ -184,7 +186,7 @@ include  "codes/form.php";
                 </form>
 				</div>
             </div>
-       
+       			<?php include "codes/reporter.php";?>
         <footer>
             <div class="footer-content">
                 <div class="footer-content-table">

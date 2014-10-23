@@ -26,6 +26,16 @@ class Audio extends Database{
 	  return false;
 	}
 	
+	public static function isFreeToBuy($audioId){
+	  $query = "SELECT id FROM audio WHERE id = '".$audioId."' AND koupeno = '0'";
+	  $result = self::handler()->query($query);
+	  if($result->num_rows > 0){
+	  	return True;
+	  }else{
+		return False;
+	  }
+	}
+	
 	public static function getAudioIdByName($name){
 	  $query = "SELECT id FROM audio WHERE nazev = '".$name."'";
 	  $result = self::handler()->query($query);

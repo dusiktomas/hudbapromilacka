@@ -7,6 +7,15 @@ $(document).ready(function (){
          }, 1000); 
     }
     
+	
+	//RE-PICK
+	
+	$(".choice-repick").on('click', function (e){
+		e.stopPropagation();
+		e.preventDefault();
+        $(".choice-layer").slideDown();
+        scrollTo("choice-layer");
+	});
     
     //GLOBAL 
     
@@ -21,7 +30,9 @@ $(document).ready(function (){
 	$("#informace-link").on('click', function(){
 	  $('.informace-layer').toggle(400);
 	})
-;	$(".information-layer-choice-click").on("click", function (){
+;	$(".information-layer-choice-click").on("click", function (e){
+		e.stopPropagation();
+        e.preventDefault();
 		scrollTo('player-layer');
 	});
 	$(".information-layer-information-click").on('click', function(){
@@ -78,22 +89,11 @@ $(document).ready(function (){
 	});
 	$(".deployment-checkbox").on('click', function () {
 		if( ! $(this).is(':checked')){
-			$(".deployment-adress").append("<span>Doručovací Adresa</span><br /><input type='text' class='form-control' name='dorucovaci_mesto' placeholder='Město' maxlength='30' required> <br /><input type='text' class='form-control' name='dorucovaci_ulice' placeholder='Ulice a číslo popisné' maxlength='40' required> <br /><input type='number' class='form-control' name='dorucovaci_psc' placeholder='PSČ' maxlength='5' required> <br />");
+			$(".deployment-adress").append("<span>Doručovací Adresa</span><br /><input type='text' class='form-control' name='dorucovaci_jmeno' placeholder='Jméno' maxlength='30' required> <br /><input type='text' class='form-control' name='dorucovaci_prijmeni' placeholder='Přijmení' maxlength='30' required> <br /><input type='text' class='form-control' name='dorucovaci_mesto' placeholder='Město' maxlength='30' required> <br /><input type='text' class='form-control' name='dorucovaci_ulice' placeholder='Ulice a číslo popisné' maxlength='40' required> <br /><input type='number' class='form-control' name='dorucovaci_psc' placeholder='PSČ' maxlength='5' required> <br />");
 		}else{
 			$(".deployment-adress").empty();
 		}
 	});
-	/*
-		$(".doprava-select").on('change', function (){
-			var doprava = $(".doprava-select option:selected").text();
-			var totalPrice = $(".total-price").text();
-			if(doprava.indexOf('Dobírka') != -1){
-				$(".total-price").text(parseFloat(totalPrice) + 40);
-			}else{
-				$(".total-price").text(totalPrice - 40);
-			}
-		});
-	*/
     
     //Icons effect and click
     var icon_progress = false;
@@ -136,7 +136,13 @@ $(document).ready(function (){
        e.preventDefault();
 	   if ($(this).data("type") == "Dárkový Balíček"){
 			$(".form-layer-form-2-wish textarea").prop('readOnly', false);
+			$(".doprava-select").attr('disabled',false);
+			$(".jmeno_osoby").attr('disabled',false);
+			$(".doprava-select").val('Dobírka');
 	   }else{
+			$(".doprava-select").val('Platba předem');
+			$(".doprava-select").attr('disabled',true);
+			$(".jmeno_osoby").attr('disabled',true);
 			$(".form-layer-form-2-wish textarea").prop('readOnly', true);
 	   }
        $(".form-layer").slideDown(); 

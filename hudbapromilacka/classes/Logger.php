@@ -34,14 +34,14 @@ class Logger extends Database{
   private function addErrorLog(){
     $this->query = "
 	  INSERT INTO logs(datum, type, msg) 
-	  VALUES ('".date('d.m.Y:h:i')."', '1', 'Objednávka se nezdařila, spadla u vytváření požadavku ".$param.", post: ".json_encode($_POST)."');
+	  VALUES ('".date('d.m.Y:h:i')."', '1', 'Objednávka se nezdařila, spadla u vytváření požadavku ".$this->param.", post: ".implode(" , ", $_POST)."');
 	"; 
   }
   
   private function addSucessLog(){
     $this->query = "
 	  INSERT INTO logs(datum, type, msg) 
-	  VALUES ('".date('d.m.Y:h:i')."', '0', 'Potvrzena nová objednávka, post: ".json_encode($_POST)."');
+	  VALUES ('".date('d.m.Y:h:i')."', '0', 'Potvrzena nová objednávka, post: ".implode(" , ", $_POST)."');
 	"; 
   }
   

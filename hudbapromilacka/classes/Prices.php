@@ -19,6 +19,7 @@ class Prices {
 		}
 	}
 	
+	
 	public function getTotalPrice(){
 		return $this->totalPrice;
 	}

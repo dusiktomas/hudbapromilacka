@@ -9,6 +9,13 @@ class Adminer extends Database{
 	}
 	return $array;
   }
+  public function getOrdersCountByDate($date){
+	$query = $this->query("SELECT count(*) AS count FROM orders WHERE datum_objednani LIKE '%".$date."%'");
+	if($row = $query->fetch_assoc()){
+		return $row['count'];
+	}
+	return Null;
+  }
   
   public function getAllAudio(){
     $array = array();

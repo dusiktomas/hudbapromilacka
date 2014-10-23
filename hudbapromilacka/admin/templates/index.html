@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"> 
-<link rel="stylesheet" href="http://localhost/hudbapromilacka/hudbapromilacka/css/bootstrap.css">
+<link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="templates/css/styles.css">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <script src="http://localhost/hudbapromilacka/hudbapromilacka/js/bootstrap.min.js"></script>
@@ -10,6 +10,11 @@
 </head>
 <body>
 
+
+	<table class="table table-striped" style="width: 250px">
+		<td>Objednávky dnes</td> 
+		<td><b>{{orderCount}}</b></td>
+	</table>
 	<h1>Logy</h1>
 	<div class="overflow logs">
 	<table class="table table-striped overflow" style="font-size: 10px;">
@@ -87,6 +92,7 @@
 		<td><strong>ZAKAZNIK<strong></td> 
 		<td><strong>AUDIO<strong></td>
 		<td><strong>JMENO OSOBY<strong></td>
+		<td><strong>POZNÁMKA<strong></td>
 		
 	</tr>
 	{% for order in adminer.getAllOrders %}
@@ -102,6 +108,7 @@
 			<td>{{order.customer}}</td>
 			<td>{{order.audio}}</td>
 			<td>{{order.jmeno_osoby}}</td>
+			<td>{{order.poznamka}}</td>
 		  </tr>
 	{%endfor%}
 	</table>
@@ -117,6 +124,11 @@
 		<td><strong>MESTO<strong></td> 
 		<td><strong>ULICE<strong></td>
 		<td><strong>PSČ<strong></td>
+		<td><strong>DORUČ_JMÉNO<strong></td> 
+		<td><strong>DORUČ_PŘIJMENÍ<strong></td>
+		<td><strong>DORUČ_MESTO<strong></td> 
+		<td><strong>DORUČ_ULICE<strong></td>
+		<td><strong>DORUČ_PSČ<strong></td>
 		
 	</tr>
 	{% for customer in adminer.getAllCustomers %}
@@ -132,6 +144,11 @@
 			<td>{{customer.mesto}}</td>
 			<td>{{customer.ulice}}</td>
 			<td>{{customer.psc}}</td>
+			<td>{{customer.dorucovaci_jmeno}}</td>
+			<td>{{customer.dorucovaci_prijmeni}}</td>
+			<td>{{customer.dorucovaci_mesto}}</td>
+			<td>{{customer.dorucovaci_ulice}}</td>
+			<td>{{customer.dorucovaci_psc}}</td>
 		  </tr>
 	{%endfor%}
 	</table>

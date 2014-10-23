@@ -7,7 +7,6 @@
 <body>
 
 <?php
-@session_start();
 
 include "../autoloader.php";
 
@@ -91,7 +90,7 @@ if(isset($_POST['jmeno']) && isset($_POST['prijmeni']) && !isset($_POST["next_st
 	echo '</table>';	
 }
 if(isset($_POST["next_step"])){
-	
+
 	$typ = htmlspecialchars($_POST["typ"]);
     $jmeno = htmlspecialchars($_POST["jmeno"]);
     $prijmeni = htmlspecialchars($_POST["prijmeni"]);
@@ -120,19 +119,13 @@ if(isset($_POST["next_step"])){
 		$dorucovaci_prijmeni = '';
 	}
 	
-
-	
 	$audio = Audio::getAudioIdByName($skladba);
 	
 	if(Audio::getAudioIdByName($skladba) === Null){
-	  $log = new Logger(1, 'Skladba je už vybraná');
-	  echo '<h3 style="margin-left: 15px"><a href="http://www.hudbapromilacka.cz">Vrátit se na hlavní stránku</a><br></h3><hr>';
-	  return print('Vaše skladba neexistuje nebo už není k dispozici<br>');
+	  return Redirection::orderRedirectToError('audio');
 	}
 	if( ! Audio::isFreeToBuy($audio)){
-	  $log = new Logger(1, 'Skladba je už vybraná');
-	  echo '<h3 style="margin-left: 15px"><a href="http://www.hudbapromilacka.cz">Vrátit se na hlavní stránku</a><br></h3><hr>';
-	  return print('Vaše skladba neexistuje nebo už není k dispozici<br>');
+	  return Redirection::orderRedirectToError('audio_bought');	
 	}
 	
 	$customerArray = array(
@@ -152,9 +145,7 @@ if(isset($_POST["next_step"])){
 	$customer = new Customer($customerArray);
 	
 	if(!$customer->isExists()){
-	  $log = new Logger(1, 'Zákazníka se nepodařilo vytvořit');
-	  echo '<h3 style="margin-left: 15px"><a href="http://www.hudbapromilacka.cz">Vrátit se na hlavní stránku</a><br></h3><hr>';
-	  return print('Chyba při vytváření zákazníka.<br>');;
+	  return Redirection::orderRedirectToError('customer');
 	}
 	$price = new Prices();
 	
@@ -171,29 +162,20 @@ if(isset($_POST["next_step"])){
 	
 	$order = new Order($orderArray);
 	if(!$order->isExists()){
-	  $log = new Logger(1, 'Objednávka spadla!');
-	  echo '<h3 style="margin-left: 15px"><a href="http://www.hudbapromilacka.cz">Vrátit se na hlavní stránku</a><br></h3><hr>';
-	  return print('Chyba při vytváření objednávky.<br>');
+	  return Redirection::orderRedirectToError('order');
 	}
 	
 	$audio = new Audio($skladba);
 	if(!$audio->isSold()){
-	  $log = new Logger(1, 'Skladba je prodaná');
-	  echo '<h3 style="margin-left: 15px"><a href="http://www.hudbapromilacka.cz">Vrátit se na hlavní stránku</a><br></h3><hr>';
-	  return print('Skladba je už bohužel prodana, vyberte si prosím jinou.<br>');
+	  return Redirection::orderRedirectToError('audioNotSold');
 	}
 	$_SESSION["order_id"] = $order->getId();
 	$_SESSION["order_email"] = $email;
-	$log = new Logger(0);
-	$mailer = new Mailer();
-	if($typ == 'Skladba'){
-		$mailer->sendAudioMail($email, $order->getId());
-	} else {
-		$mailer->sendPackageMail($email, $order->getId());
-	}
+	Redirection::orderRedirectToSuccess();	
+
 }
 
-if (isset($_SESSION["order_id"])){
+if (isset($_SESSION["order_id"]) && @$_GET["success"] == 'true'){
 	echo '<h4> Objednávka úspěšně provedena </h4><hr>';
 	echo 'Vaše objednávka s číslem <b>'.$_SESSION["order_id"].'</b> byla úspěšně provedena.<br> 
 	Informace o objednávce jsme vám zaslali na email <b>'.$_SESSION["order_email"].'</b>.<br> Děkujeme za váš nákup.';
@@ -203,44 +185,43 @@ if (isset($_SESSION["order_id"])){
 }
 ?>
 
-<?php if(!isset($_SESSION['order_id'])): ?>
-	<?php if(@$_GET["error"] == 'audio_bought'): ?>
-		<h4>Chyba v objednávce</h4><hr>
-		Vaši skladbu bohužel koupil už někdo jiný, vyberte si prosím jinou.<br><br>
-		<button type="submit" class="btn btn-default" onclick="location.href = 'index.php';">Zpět</button>
-	<?php endif; ?>
-
-	<?php if(isset($_GET['error']) && @$_GET["error"] != 'audio_bought'): ?>
-		<h4>Chyba v objednávce</h4><hr>
-		Objednávka se nezdařila, zkontrolujte si prosím vaše údaje.<br><br>
-		
-		<button type="submit" class="btn btn-default" onclick="location.href = 'index.php';">Zpět</button>
-
-	<?php endif; ?>
-
-
-
-	<?php if(!isset($_GET["success"]) && !isset($_GET['error'])):?>
-		
-		<table class="table" style="width: 350px">
-			<td>Obdarovaná osoba</td>
-			<td><?php   echo $jmeno_osoby;?></td><tr></tr>
-			<td>Přání</td>
-			<td><?php   echo $prani;?><td>
-		</table><hr>
-		<form method="POST">
-		Poznámka<br>
-		<textarea name="poznamka" cols="50"> </textarea><br><br>
-			<?php 
-				foreach ($_POST as $key => $val){
-					echo '<input type="hidden" name="'.$key.'" value="'.$val.'">';
-				}
-					echo '<input type="hidden" name="next_step">';
-			?>
-		  <button type="submit" class="btn btn-default" style="margin-left: 208px"><b>Objednat</b></button>
-		</form>
-		<button class="btn btn-default" style="margin-top: -48px" onclick="location.href = 'http://www.hudbapromilacka.cz';">Zpět</button>
-	<?php endif; ?>
+<?php if(@$_GET["error"] == 'audio_bought'): ?>
+	<h4>Chyba v objednávce</h4><hr>
+	Vaši skladbu bohužel koupil už někdo jiný, vyberte si prosím jinou.<br><br>
+	<button type="submit" class="btn btn-default" onclick="location.href = 'index.php';">Zpět</button>
 <?php endif; ?>
+
+<?php if(isset($_GET['error']) && @$_GET["error"] != 'audio_bought'): ?>
+	<h4>Chyba v objednávce</h4><hr>
+	Objednávka se nezdařila, zkontrolujte si prosím vaše údaje.<br><br>
+	
+	<button type="submit" class="btn btn-default" onclick="location.href = 'index.php';">Zpět</button>
+
+<?php endif; ?>
+
+
+
+<?php if(!isset($_GET["success"]) && !isset($_GET['error'])):?>
+	
+	<table class="table" style="width: 350px">
+		<td>Obdarovaná osoba</td>
+		<td><?php   echo $jmeno_osoby;?></td><tr></tr>
+		<td>Přání</td>
+		<td><?php   echo $prani;?><td>
+	</table><hr>
+	<form method="POST">
+	Poznámka<br>
+	<textarea name="poznamka" cols="50"> </textarea><br><br>
+		<?php 
+			foreach ($_POST as $key => $val){
+				echo '<input type="hidden" name="'.$key.'" value="'.$val.'">';
+			}
+				echo '<input type="hidden" name="next_step">';
+		?>
+	  <button type="submit" class="btn btn-default" style="margin-left: 208px"><b>Objednat</b></button>
+	</form>
+	<button class="btn btn-default" onclick="location.href = 'http://www.hudbapromilacka.cz';">Zpět</button>
+<?php endif; ?>
+
 </body>
 </html>

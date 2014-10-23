@@ -4,9 +4,10 @@ class Customer extends Database{
   
   public function __construct($args){
     $query = "
-	INSERT INTO customers(jmeno, prijmeni, email, mesto, ulice, psc)
+	INSERT INTO customers(jmeno, prijmeni, email, mesto, ulice, psc, dorucovaci_mesto, dorucovaci_ulice, dorucovaci_psc, dorucovaci_jmeno, dorucovaci_prijmeni)
 	VALUES ('".$args['jmeno']."', '".$args['prijmeni']."', '".$args['email']."', 
-	'".$args['mesto']."', '".$args['ulice']."', '".$args['psc']."');
+	'".$args['mesto']."', '".$args['ulice']."', '".$args['psc']."', '".$args['dorucovaci_mesto']."',
+	'".$args['dorucovaci_ulice']."', '".$args['dorucovaci_psc']."', '".$args['dorucovaci_jmeno']."', '".$args['dorucovaci_prijmeni']."');
 	";
 	$result = self::handler()->query($query);
 	if($result){
